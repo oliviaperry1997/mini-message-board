@@ -25,7 +25,6 @@ router.post("/new", (req, res) => {
     const { text, user } = req.body;
     messages.push({ text: text, user: user, added: new Date() });
     console.log(messages);
-    res.send("Form submitted successfully!");
     res.redirect("/");
 });
 
