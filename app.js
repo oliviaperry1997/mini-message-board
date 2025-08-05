@@ -1,26 +1,12 @@
 const express = require("express");
 const app = express();
 const path = require("node:path");
-
-const messages = [
-    {
-        text: "Hi there!",
-        user: "Amanda",
-        added: new Date(),
-    },
-    {
-        text: "Hello World!",
-        user: "Olivia",
-        added: new Date(),
-    },
-];
+const router = require("./routes/router");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-    res.render("index", { title: "Mini Messageboard", messages: messages });
-});
+app.use("/", router);
 
 const PORT = 3000;
 app.listen(PORT, () => {
